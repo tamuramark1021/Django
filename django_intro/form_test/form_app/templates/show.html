@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Show Page</h1>
+    <!-- <h3>Info Submitted:</h3>
+        <p>Name: {{name_on_template}}</p>
+        <p>Email: {{email_on_template}}</p> -->
+
+        <form action="/random_word" method="post">
+            {%csrf_token&}
+            <div>Random Number Counter: views.random_word.count</div>
+            <p>Random Word: 'UniqueID'</p>
+            <button type="submit">New Random Word</button>
+        </form>
+</body>
+</html>

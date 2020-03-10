@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <% load static%>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h3>Your Gold
+                <div type=TextField>{{score}}</div>
+            </h3>
+        </header>
+
+        <div class= "gold_buttons">
+            <div>
+                <h2>Farm</h2>
+                <p>(earns 10-20 golds)</p>
+                <form method="POST", action="/process_money">
+                    <%csrf_token%>
+                    <input type="hidden", name="">
+                    <button type="submit">Find Gold!</button>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

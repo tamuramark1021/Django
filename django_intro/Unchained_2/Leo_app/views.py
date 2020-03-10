@@ -4,7 +4,8 @@
 
 from django.shortcuts import render, HttpResponse, redirect
 def index(request):
-    return HttpResponse("/placeholder to later display a list of all blogs")
+    return render(request, "index1.html")
+# HttpResponse("/placeholder to later display a list of all blogs")
 
 # Create your views here.
 def new(request):
@@ -21,3 +22,10 @@ def edit(request, blog_id):
 
 def delete(request, blog_id):
     redirect("/")
+
+def hello_name(request, name):
+    context ={
+        "htmlname": name,
+        "nameList": ["arthur", "lancelot", "galahad", "gwenivere"]
+    }
+    return render(request, "helloName.html", context)
