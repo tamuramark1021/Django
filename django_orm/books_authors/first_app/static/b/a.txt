@@ -1,0 +1,135 @@
+(djangoPy3Env) PS C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\django\django_orm\books_authors> python manage.py makemigrations
+Migrations for 'first_app':
+  first_app\migrations\0001_initial.py
+    - Create model Author
+    - Create model Book
+    - Create model Book_author
+(djangoPy3Env) PS C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\django\django_orm\books_authors> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, first_app, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying first_app.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+>>> from first_app.models import Book, Author, Book_author
+>>> c_sharp= Book.objects.create(title="C Sharp", desc="a book about sharp C\'s")
+>>> java= Book.objects.create(title="Java", desc="a book about coffee")           
+>>> python= Book.objects.create(title="Python", desc="a book about snakes") 
+>>> php= Book.objects.create(title="PHP", desc="POP with a little ph")      
+>>> Ruby= Book.objects.create(title="Ruby", desc="about Ruby Roundhouse, killer of men") 
+
+>>> Jane_austen=Author.objects.create(first_name="Jane", last_name="Austen")
+>>> Emily_dickinson=Author.objects.create(first_name="Emily", last_name="Dickinson") 
+>>> Fyrodo_dostoevksy=Author.objects.create(first_name="Fyrodo", last_name="Dostoevksy")  
+>>> william_shakespeare=Author.objects.create(first_name="William", last_name="Shakespeare") 
+>>> lau_tzu=Author.objects.create(first_name="Lau", last_name="Tzu")  
+
+(djangoPy3Env) PS C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\django\django_orm\books_authors> python manage.py makemigrations
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> will be updated
+Invalid input: invalid syntax (<string>, line 1)
+>>> "will be updated"
+Migrations for 'first_app':
+  first_app\migrations\0002_author_notes.py
+    - Add field notes to author
+(djangoPy3Env) PS C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\django\django_orm\books_authors> python manage.py migrate       
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, first_app, sessions
+Running migrations:
+  Applying first_app.0002_author_notes... OK
+(djangoPy3Env) PS C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\django\django_orm\books_authors> python manage.py shell
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 22:45:29) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from first_app.models import *      
+>>> c=Book.objects.get(id=1)       
+>>> c.title= "C#" 
+>>> c.save()
+>>> Book.objects.get(id=1).values()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+
+>>> c=Author.objects.get(id=4)  
+>>> c.first_name= "bill"
+>>> c.save 
+<bound method Model.save of <Author: Author object (4)>>
+
+>> some_book=Book.objects.get(id=1)
+>>> some_author=Author.objects.get(id=1)
+>>> some_author.books.add(some_book)
+>>> some_book.authors.add(some_author)
+>>> some_book=Book.objects.get(id=2)
+>>> some_author.books.add(some_book)
+
+>>> some_author=Author.objects.get(id=2)
+>>> some_book = Book.objects.get(id=1) 
+>>> some_book.authors.add(some_author)
+>>> some_book = Book.objects.get(id=2) 
+>>> some_book.authors.add(some_author) 
+>>> some_book = Book.objects.get(id=3) 
+>>> some_book.authors.add(some_author) 
+>>> some_book = Book.objects.get(id=4) 
+>>> some_book.authors.add(some_author) 
+>>> some_book = Book.objects.get(id=5) 
+>>> some_book.authors.add(some_author) 
+
+some_author=Author.objects.get(id=3)
+>>> some_book = Book.objects.get(id=1)   
+>>> some_book.authors.add(some_author)   
+>>> some_book = Book.objects.get(id=2) 
+>>> some_book.authors.add(some_author) 
+>>> some_book = Book.objects.get(id=3) 
+>>> some_book.authors.add(some_author) 
+
+some_author=Author.objects.get(id=4) 
+>>> some_book = Book.objects.get(id=1)   
+>>> some_book.authors.add(some_author)   
+>>> some_book = Book.objects.get(id=2) 
+>>> some_book.authors.add(some_author) 
+>>> some_book = Book.objects.get(id=3) 
+>>> some_book.authors.add(some_author) 
+
+>>> some_book = Book.objects.get(id=3)
+>>> some_book.authors.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>]>
+>>> some_author=Author.objects.get(id=2)
+>>> some_book.authors.remove(some_author)
+>>> some_book.authors.all()               
+<QuerySet [<Author: Author object (3)>, <Author: Author object (4)>]>
+
+
+>>> some_author=Author.objects.get(id=5)  
+>>> some_book = Book.objects.get(id=2)    
+>>> some_book.authors.add(some_author)    
+>>> some_book.authors.all()
+<QuerySet [<Author: Author object (1)>, <Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>, <Author: Author object (5)>]>
+
+>>> some_author=Author.objects.get(id=3) 
+>>> some_author.books.all()              
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>]>
+
+>>> some_book = Book.objects.get(id=5) 
+>>> some_book.authors.all()
+<QuerySet [<Author: Author object (2)>]>
+
+

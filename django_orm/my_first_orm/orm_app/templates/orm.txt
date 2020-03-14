@@ -1,0 +1,35 @@
+ Movie.objects.create(title= "hitchhiker's guide to the galaxy", description= "bilbo gets kidnapped and taken around the galaxy to find out the meaning of life", release_date = "1992-1-1", duration = 120)
+C:\Users\Olorin\Desktop\Coding_Dojo\Python_stack\environments\djangoPy3Env\lib\site-packages\django\db\models\fields\__init__.py:1418: RuntimeWarning: DateTimeField Movie.release_date received a naive datetime (1992-01-01 00:00:00) while time zone support is active.
+  warnings.warn("DateTimeField %s received a naive datetime (%s)"
+<Movie: Movie object (1)>
+
+
+User.objects.create(first_name= "Mark", last_name="Tamura", email_addr= "tamuramark1021@gmail.com", age=33)
+<User: User object (1)>
+>>> User.objects.create(first_name="Kevin", last_name="Udink", email_addr="kevudink@gmail.com", age=45)
+<User: User object (2)>
+>>> User.objects.create(first_name="David", last_name="Naugler", email_addr="dnaugler@gmail.com", age=33) 
+<User: User object (3)>
+
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+
+>>> User.objects.get(id=3) 
+<User: User object (3)>
+>>> User.objects.get(id=1)
+<User: User object (1)>
+
+>>> c=User.objects.get(id=3)
+>>> c.last_name="pancakes"
+>>> c.save()
+{'id': 3, 'first_name': 'David', 'last_name': 'pancakes'
+
+>>> c=User.objects.get(id=1)
+>>> c.delete()
+(1, {'orm_app.User': 1})
+
+>>> User.objects.all().order_by("first_name")  
+<QuerySet [<User: User object (3)>, <User: User object (2)>]>
+
+>>> User.objects.all().order_by("-first_name") 
+<QuerySet [<User: User object (2)>, <User: User object (3)>]>

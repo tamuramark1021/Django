@@ -11,7 +11,7 @@
     <div class="container">
         <header>
             <h3>Your Gold
-                <div type=TextField>{{score}}</div>
+                <TextField class='score_box'>{{request.session.gold_count}}</textarea>
             </h3>
         </header>
 
@@ -19,10 +19,40 @@
             <div>
                 <h2>Farm</h2>
                 <p>(earns 10-20 golds)</p>
-                <form method="POST", action="/process_money">
+                <form method="POST", action="farm_gold/">
                     <%csrf_token%>
-                    <input type="hidden", name="">
-                    <button type="submit">Find Gold!</button>
+                    <input type="hidden", name="farm_gold/">
+                    <button type="submit" class="btn btn-primary">Find Gold!</button>
+                
+                </form>
+            </div>
+            <div>
+                <h2>Cave</h2>
+                <p>(earns 5-10 golds)</p>
+                <form method="POST", action="cave_gold/">
+                    <%csrf_token%>
+                    <input type="hidden", name="cave_gold/">
+                    <button type="submit" class="btn btn-primary">Find Gold!</button>
+                
+                </form>
+            </div>
+            <div>
+                <h2>House</h2>
+                <p>(earns 2-5 golds)</p>
+                <form method="POST", action="house_gold/">
+                    <%csrf_token%>
+                    <input type="hidden", name="house_gold/">
+                    <button type="submit" class="btn btn-primary">Find Gold!</button>
+                
+                </form>
+            </div>
+            <div>
+                <h2>Casino</h2>
+                <p>(earns/lose 0-50 golds)</p>
+                <form method="POST", action="casino_gamble/">
+                    <%csrf_token%>
+                    <input type="hidden", name="casino_gamble/">
+                    <button type="submit" class="btn btn-primary">Find Gold!</button>
                 
                 </form>
             </div>

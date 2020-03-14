@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    /* display: block; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border: 1px dotted red; */
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://files.nc.gov/ncdcr/styles/main-image/public/1140-yeager-sell-your-used-books.imgcache.rev661df3f628ce819a8306ca96aa6bc36f_0.jpg?itok=8Zi17yRP");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  tbody{
+    padding: 5px;
+    color: white;
+  }
+  thead{
+    color: white;
+  }
+  table{
+    width: 250px;
+    height: 300px;
+    margin: unset;
+    border: 2px solid white;
+    align-self: center;
+    
+  }
+  h1{
+    color: white;
+  }
+  form{
+    width: 300px;
+    display: table-caption;
+    color: white
+
+  }
+  .container{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  a{
+    color: white;
+  }

@@ -1,0 +1,58 @@
+>>> Dojo.objects.create(name="Boise Dojo!", city = "Boise", state= "ID"
+... )
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name="Seattle Dojo!", city= "Seattle", state="WA")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name="Oakland Dojo!", city= "Oakland", state="CA") 
+<Dojo: Dojo object (3)>
+
+>>> c=Dojo.objects.get(id=1) 
+>>> c.delete
+<bound method Model.delete of <Dojo: Dojo object (1)>>
+>>> c=Dojo.objects.get(id=2)
+>>> c.delete
+<bound method Model.delete of <Dojo: Dojo object (2)>>
+>>> c=Dojo.objects.get(id=3) 
+>>> c.delete
+<bound method Model.delete of <Dojo: Dojo object (3)>>
+
+>>> Dojo.objects.create(name="Boise Dojo Rebirth!", city="Boiiiise", state="ID")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name="Arlington Dojo!", city="Arlington", state="VA")     
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name="Chicago Dojo!", city="Chicago", state="IL")     
+<Dojo: Dojo object (6)>
+
+>>> Ninja.objects.create(first_name="Kevin", last_name="Udink", dojo=Dojo.objects.get(id=1)
+... )
+<Ninja: Ninja object (1)>
+>>> Ninja.objects.create(first_name="Mark", last_name="Tamura", dojo=Dojo.objects.get(id=1))  
+<Ninja: Ninja object (2)>
+>>> Ninja.objects.create(first_name="Isiah", last_name="Fletcher", dojo=Dojo.objects.get(id=1)) 
+<Ninja: Ninja object (3)>
+>>> Ninja.objects.create(first_name="Vinson", last_name="Aiono", dojo=Dojo.objects.get(id=2))   
+<Ninja: Ninja object (4)>
+>>> Ninja.objects.create(first_name="John", last_name="Smith", dojo=Dojo.objects.get(id=2))   
+<Ninja: Ninja object (5)>
+>>> Ninja.objects.create(first_name="Monte", last_name="Python", dojo=Dojo.objects.get(id=2)) 
+<Ninja: Ninja object (6)>
+>>> Ninja.objects.create(first_name="Billy", last_name="Bob", dojo=Dojo.objects.get(id=3))    
+<Ninja: Ninja object (7)>
+>>> Ninja.objects.create(first_name="Leroy", last_name="Jenkins", dojo=Dojo.objects.get(id=3))  
+<Ninja: Ninja object (8)>
+>>> Ninja.objects.create(first_name="Tyrande", last_name="Whisperwind", dojo=Dojo.objects.get(id=3)) 
+<Ninja: Ninja object (9)>
+
+>>> Dojo.objects.first().ninjas.all().values("first_name")
+<QuerySet [{'first_name': 'Kevin'}, {'first_name': 'Mark'}, {'first_name': 'Isiah'}]>
+
+
+>>> Dojo.objects.last().ninjas.all().values("first_name")   
+<QuerySet [{'first_name': 'Billy'}, {'first_name': 'Leroy'}, {'first_name': 'Tyrande'}]>
+
+
+>>> Ninja.objects.last().dojo_id 
+3
+
+>>> Dojo.objects.create(name="We da Best", city="Boise", state="ID", desc="we have da best, we be dat best, NEW MUSIC... DJ KHALIIIIIIIIID")
+<Dojo: Dojo object (4)>

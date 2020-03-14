@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>{{some_author.first_name}} {{some_author.last_name}}</h2>
+        <p> ID: {{some_author.id}}</p>
+        <p> Notes: {{some_author.notes}}</p>
+        {% comment %} <p> Books: {{some_author.books.all()}}</p>   {% endcomment %}
+        {% comment %} Mark, you do not need the line of code above.  {% endcomment %}
+        <p>Books:</p>
+        {%for book in some_author.books.all%}
+        <ul>{{book.title}}</ul>
+        {%endfor%}
+        <form action="/add_book_to_author/{{some_author.id}}" method='POST'>
+        {% csrf_token %}
+            <select name="book_id">
+                {%for book in all_the_books%}
+                <option value="{{book.id}}">{{book.title}}</option> 
+                {% endfor %} 
+                {% comment %} Mark, you did not have your closing endfor loop             {% endcomment %}
+            </select>
+                <button class="btn-success" type='submit'>Add book to this Author</button></div>
+        </form>
+    
+    <a href="/author_page">Back</a>
+</body>
+</html>
