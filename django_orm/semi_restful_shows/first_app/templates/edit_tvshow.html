@@ -1,0 +1,25 @@
+{%extends 'index.html'%}
+{%block content%}
+    <h1>Edit Show: {{some_tvshow.title}}</h1>
+
+    <form action="/change_tvshow/{{some_tvshow.id}}" method='POST'>
+        {% csrf_token %}
+        <div>Title</div>
+        <div><input type="text" name="title"></div>
+        <table>
+            <tr>
+                <th>Network</th>
+                <th>Release Date</th>
+            </tr>
+            <tr>
+                <td><input type="text"name='network'></td>
+                <td><input type="date" name="release_date"></td>
+            </tr>
+        </table>
+        <div>Description</div>
+        <div><textarea type="text" name="desc"></textarea></div>
+        <input class="edit_show_button" type="submit" name="updated_at" value="Update">
+
+    </form>    
+
+{%endblock content%}

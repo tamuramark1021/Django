@@ -1,0 +1,28 @@
+{%extends 'index.html'%}
+{%block content%}
+    <h1>All Shows</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Network</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+        </tr>
+            {%for tvshow in all_tvshow%}
+        <tr>
+            <td>{{tvshow.id}}</td>
+            <td>{{tvshow.title}}</td>
+            <td>{{tvshow.network}}</td>
+            <td>{{tvshow.release_date}}</td>
+            <td>
+                <a href='/tvshow_info/{{tvshow.id}}'>Show</a>
+                <a href='/tvshow_info/{{tvshow.id}}/edit'>Edit</a>
+                <a href='/delete_tvshow/{{tvshow.id}}'>Delete</a>
+            </td>
+            {%endfor%}
+        </tr>
+    </table>
+    <a href='/tvshow/tvshow_new'>Add a New Show</a>
+{%endblock content%}
