@@ -1,0 +1,27 @@
+{%extends 'index.html'%}
+{%block content%}
+<form action="/add_user" class="register_form" method='POST'>
+    {% csrf_token %}
+    <div>First Name</div>
+    <div><input type="text" name="first_name"></div>
+    <div>Last Name</div>
+    <div><input type="text" name="last_name"></div>
+    <div>Email</div>
+    <div><input type="text" name="email_register"></div>
+    <div>Password</div>
+    <div><input type="password" name="password_register"></div>
+    <div>Confirm PW</div>
+    <div><input type="PW" name="last_name"></div>
+    <input type="submit" value="Register" ></button>
+</form>
+
+<form action="login/" class="login_form" method='GET'>
+    <div>Email</div>
+    <div><input type="text" name="email_login"></div>
+    <div>Password</div>
+    <div><input type="password" name="password_login"></div>
+    <input type="submit" value="Log In" ></button>
+</form>
+
+
+{%endblock content%}

@@ -1,0 +1,13 @@
+{%extends 'index.html'%}
+{%block content%}
+<h1> Abaddon Store!!</h1>
+
+<form action='abaddon/buy' method='post'>
+{% csrf_token %}
+    <input type="number" name="quantity" min='1', max='3'>
+    <input type="hidden" name="product_id" value='1015'/>
+    <button type='submit'>Buy!</button>
+
+</form>
+
+{%endblock content%}
