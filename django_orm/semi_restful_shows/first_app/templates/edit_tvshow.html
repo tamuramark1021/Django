@@ -5,19 +5,19 @@
     <form action="/change_tvshow/{{some_tvshow.id}}" method='POST'>
         {% csrf_token %}
         <div>Title</div>
-        <div><input type="text" name="title"></div>
+        <div><input type="text" name="title" required minlength="1"></div>
         <table>
             <tr>
                 <th>Network</th>
                 <th>Release Date</th>
             </tr>
             <tr>
-                <td><input type="text"name='network'></td>
+                <td><input type="text"name='network' required minlength="3"></td>
                 <td><input type="date" name="release_date"></td>
             </tr>
         </table>
         <div>Description</div>
-        <div><textarea type="text" name="desc"></textarea></div>
+        <div><textarea type="text" name="desc" required minlength="10"></textarea></div>
         <input class="edit_show_button" type="submit" name="updated_at" value="Update">
 
     </form>    
