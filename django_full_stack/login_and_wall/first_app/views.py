@@ -44,3 +44,5 @@ def success(request):
         'user':User.objects.get(id=request.session['id'])
     }
     return render(request, 'login.html', context)
+
+# Create your views here.

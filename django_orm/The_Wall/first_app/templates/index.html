@@ -5,15 +5,35 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Login and Register</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    {%if title %}
+        <title>The Wall - {{title}}</title>
+    {%else%}
+        <title>The Wall</title>
+    {%endif%}    
 </head>
 <body>
-    <div></div>
-    {%block content%}
-    {%endblock content%}
+    <nav>
+    <a href="home_page/">Home</a>
+    <a href="login/">Login</a>
+    </nav>
+<h2> Post a message</h2>
+<form method='POST' action='/add_post'>
+    {% csrf_token %}
+    <div><textarea name="post_message" rows:'7' cols: '100'></textarea>
+    <input type="submit" value="Post this message!" rows='4' cols="70" background-color: blue></div>
+
+</form>
+
+{%for posted in all_post%}
+    <ul>{{posted.user_id}}</ul>
+    <ul>{{posted.message}}</ul>
+{%block comment%}{%endblock comment%}
+{%endfor%}
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
