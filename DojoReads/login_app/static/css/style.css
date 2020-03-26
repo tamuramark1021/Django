@@ -1,0 +1,47 @@
+body, html{
+    height: 100%;
+    width: 100%;
+    font-size: large;
+}
+
+nav{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.container{
+    margin-top: 40px;
+    display: flex;
+    
+}
+.register_form{
+    margin: auto;
+    height: auto;
+    width: 300px;
+    display: inline-block;
+    border: 4px solid gray
+}
+.register_button{
+    color: white;
+    background-color: blue;
+    align-self: flex-end;
+}
+.login_form{
+    height: 132px;
+    width: 290px;
+    border: 4px solid gray;
+}
+.login_button{
+    color: white;
+    background-color: green;
+}
+label{
+    width: 214px;
+    display: inline-block;
+    justify-content: space-evenly;
+}
+.book_display{
+    height: 5%;
+}
+.add_another_review{
+    align-self: flex-end;
+}

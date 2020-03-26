@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {%load static%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title></title>
+</head>
+<body>
+    <nav>
+        <a href="/">Logout</a>||
+        <a href="/book">Home</a>
+    </nav>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h3>Add a New Book Title and a Review:</h3>
+    <form action="/book/add_new_book" method="post">
+        {%csrf_token%}
+        <label>Book Title:<input type="text" name="title" required></label>
+        <label>author
+            <select>
+                <option value="" disabled selected hidden></option>
+                {%for author in all_author%}
+                <option name="author_dropbox">{{author.author}}</option>
+                {%endfor%}              
+            </select>
+                <p>Or add a new author:<input type="text" name="author"></p>
+        </label>
+        <p>Review:</p><textarea class=review_field name="content" required rows="3" cols="50"></textarea>
+        <p><select class="rating_dropbox" name='rating'>Rating"
+            <option class="1-star">1</option>
+            <option class="2-star">2</option>
+            <option class="3-star">3</option>
+            <option class="4-star">4</option>
+            <option class="5-star">5</option>
+        </select>star(s)</p>
+        <button type="submit">Add Book and Review</button>
+    </form>
+</body>
+</html>

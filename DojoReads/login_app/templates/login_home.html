@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {%load static%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title></title>
+</head>
+<body>
+    <h2>Welcome!</h2>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="container">
+        <form action='/register' class='register_form' method='POST'>
+            {%csrf_token%}
+            <label>First Name<input type='text' name='first_name' required></label>
+            <label>Last Name<input type='text' name='last_name' required></label>
+            <label>Email<input type='text' name='email' required></label>
+            <label>Password<input type='password' name='password' required></label>
+            <label>Confirm PW<input type='password' name='confirm' required></label>
+            <button type='submit' class='register_button'>Register</button>
+        </form>
+
+        <form action='/login' class='login_form' method='POST'>
+            {%csrf_token%}
+            <label>Email<input type='text' name='email' required></label>
+            <label>Password<input type='password' name='password' required></label>
+            <button type='submit' class='login_button'>Login</button>
+        </form>
+    </div>
+
+
+
+</body>
+</html>
